@@ -14,13 +14,14 @@
 .aside {
   grid-column: 1/2;
   grid-row: 1/2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0 ,0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 // Move the navigation to the bottom of the screen on handheld devices
 @media screen and (max-width: 500px) {
   .app-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 7fr 1fr;
+    grid-template-rows: 93% 1fr;
   }
 
   .content {
