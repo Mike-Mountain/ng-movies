@@ -15,7 +15,7 @@ export class BaseHttpService<T> {
   }
 
   public setUrl(partial?: string): string {
-    return `${this.apiUrl}/${partial}`;
+    return `${this.apiUrl}/${partial}&language=en-US`;
   }
 
   public setHeaders(headers: {}): HttpHeaders {
