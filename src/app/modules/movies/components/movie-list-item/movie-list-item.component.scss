@@ -1,4 +1,13 @@
+:host {
+  display: block;
+  width: 30%;
+  margin: .25rem;
+}
+
 .movie-list-item {
   box-shadow: 0 2px 4px rgba(0, 0, 0 ,0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
-  padding: .75%;
+  padding: .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

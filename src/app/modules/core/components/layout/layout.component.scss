@@ -9,6 +9,8 @@
 .content {
   grid-column: 2/3;
   grid-row: 1/2;
+  max-height: 100%;
+  overflow: auto;
 }
 
 .aside {

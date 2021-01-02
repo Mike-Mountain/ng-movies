@@ -1,3 +1,9 @@
 <div class="movie-list-item">
-
+  <a>
+    <img
+      class="movie-poster"
+      [alt]="'Poster for ' + movie?.title"
+      [src]="apiConfigService.apiConfig?.images?.secure_base_url | setImageSrc : 'original' : movie?.poster_path"
+    >
+  </a>
 </div>

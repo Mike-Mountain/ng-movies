@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MovieOverview} from '../../models/movie-overview.model';
+import {ApiConfigService} from '../../../shared/services/api-config/api-config.service';
 
 @Component({
   selector: 'app-movie-list-item',
@@ -10,7 +11,7 @@ export class MovieListItemComponent implements OnInit {
 
   @Input() movie: MovieOverview | undefined;
 
-  constructor() {
+  constructor(public apiConfigService: ApiConfigService) {
   }
 
   ngOnInit(): void {

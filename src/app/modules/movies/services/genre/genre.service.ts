@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BaseHttpService} from '../../../shared/services/base-http.service';
+import {BaseHttpService} from '../../../shared/services/base-http/base-http.service';
 import {GenreList} from '../../models/genres.model';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';

@@ -21,7 +21,7 @@
 }
 
 .movies-content {
-  height: 100%;
+  //height: 100%;
   width: 90%;
   overflow: auto;
 }
@@ -34,8 +34,9 @@
 }
 
 .genres {
-  height: 100%;
+  //height: 100%;
   width: 10%;
+  overflow: auto;
 }
 
 @media screen and (max-width: 500px) {

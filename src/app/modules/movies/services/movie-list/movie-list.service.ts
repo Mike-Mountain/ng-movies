@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {BaseHttpService} from '../../../shared/services/base-http.service';
+import {BehaviorSubject, forkJoin, Observable} from 'rxjs';
+import {BaseHttpService} from '../../../shared/services/base-http/base-http.service';
 import {MovieList} from '../../models/movies.model';
 import {HttpClient} from '@angular/common/http';
 
@@ -16,15 +16,29 @@ export class MovieListService extends BaseHttpService<MovieList> {
   }
 
   public initializeTopMovies(): void {
-    const extras = {
+    const extrasOne = {
       sort_by: 'popularity.desc',
       page: '1',
       region: 'US'
     };
-    const url = super.setUrl('discover/movie', extras);
+    const extrasTwo = {
+      sort_by: 'popularity.desc',
+      page: '2',
+      region: 'US'
+    };
+    const urlOne = super.setUrl('discover/movie', extrasOne);
+    const urlTwo = super.setUrl('discover/movie', extrasTwo);
     // TODO: Add to local DB
-    super._get(url).subscribe(movies => {
-      this.setTopMovies(movies);
+    const sources = [
+      super._get(urlOne),
+      super._get(urlTwo)
+    ];
+    forkJoin(sources).subscribe(movies => {
+      const arr1 = movies[0].results;
+      const arr2 = movies[1].results;
+      const allMovies = movies[0];
+      allMovies.results = arr1.concat(arr2);
+      this.movieListSrc.next(allMovies);
     });
   }
 
@@ -37,7 +51,6 @@ export class MovieListService extends BaseHttpService<MovieList> {
   }
 
   private setTopMovies(movies: MovieList): void {
-    movies.results = movies.results?.splice(0, 8);
     this.movieListSrc.next(movies);
   }
 
