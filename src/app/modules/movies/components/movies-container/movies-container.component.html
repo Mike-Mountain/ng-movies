@@ -1,1 +1,17 @@
-<p>movies-container works!</p>
+<section class="movies-container">
+  <div class=movies-content>
+    <h1 class="movies-content-title">Top Movies</h1>
+    <ng-container *ngIf="movieListService.getMovies() | async as movieList">
+      <div class="top-movies">
+        <ng-container *ngFor="let movie of movieList.results">
+          <app-movie-list-item
+            [movie]="movie"
+          ></app-movie-list-item>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+  <aside class="genres">
+    <app-genre-list></app-genre-list>
+  </aside>
+</section>

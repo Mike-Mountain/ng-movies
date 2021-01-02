@@ -14,27 +14,34 @@ export class BaseHttpService<T> {
     this.apiUrl = environment.apiUrl;
   }
 
-  public setUrl(partial?: string): string {
-    return `${this.apiUrl}/${partial}&language=en-US`;
+  public setUrl(partial?: string, extras?: {}): string {
+    let url = `${this.apiUrl}/${partial}?api_key=${environment.key}&language=en-US`;
+    if (extras) {
+      Object.keys(extras).forEach(key => {
+        // @ts-ignore
+        url += `&${key}=${extras[key]}`;
+      });
+    }
+    return url;
   }
 
   public setHeaders(headers: {}): HttpHeaders {
     return new HttpHeaders(headers);
   }
 
-  private _get(url: string, headers?: HttpHeaders): Observable<T> {
+  public _get(url: string, headers?: HttpHeaders): Observable<T> {
     return this.httpClient.get<T>(url, {headers});
   }
 
-  private _put(url: string, item: T, headers?: HttpHeaders): Observable<T> {
+  public _put(url: string, item: T, headers?: HttpHeaders): Observable<T> {
     return this.httpClient.put<T>(url, item, {headers});
   }
 
-  private _post(url: string, item: T, headers?: HttpHeaders): Observable<T> {
+  public _post(url: string, item: T, headers?: HttpHeaders): Observable<T> {
     return this.httpClient.post<T>(url, item, {headers});
   }
 
-  private _delete(url: string): Observable<T | undefined> {
+  public _delete(url: string): Observable<T | undefined> {
     return this.httpClient.delete<T>(url);
   }
 }

@@ -1,7 +1,7 @@
-import {apiToken} from './token.const';
+import {apiKey} from './token.const';
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.themoviedb.org/',
-  token: apiToken
+  apiUrl: 'https://api.themoviedb.org/3',
+  key: apiKey
 };

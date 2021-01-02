@@ -1,0 +1,8 @@
+<nav class="genre-list">
+  <h3 class="nav-title">Genres</h3>
+  <ng-container *ngIf="genreService.getGenres() | async as genreList">
+    <ng-container *ngFor="let genre of genreList.genres">
+      <a class="nav-item">{{genre.name}}</a>
+    </ng-container>
+  </ng-container>
+</nav>

@@ -1,0 +1,49 @@
+.movies-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.movies-content {
+  height: 100%;
+  width: 70%;
+}
+
+.movies-content-title {
+  width: 100%;
+  text-align: center;
+  margin-top: .5rem;
+}
+
+.genres {
+  height: 100%;
+  width: 30%;
+}
+
+.movies-content {
+  height: 100%;
+  width: 90%;
+  overflow: auto;
+}
+
+.top-movies {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.genres {
+  height: 100%;
+  width: 10%;
+}
+
+@media screen and (max-width: 500px) {
+  .movies-content {
+    width: 70%;
+  }
+
+  .genres {
+    width: 30%;
+  }
+}
