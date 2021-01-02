@@ -1,0 +1,15 @@
+<section class="movie-details-container">
+  <div class="movie-details-main">
+    <div class="card details-card">
+      <h1>{{selectedMovie?.title}}</h1>
+      <h3>{{selectedMovie?.tagline}}</h3>
+    </div>
+  </div>
+  <div class="poster">
+    <img
+      class="card"
+      [alt]="'Poster for ' + selectedMovie?.title"
+      [src]="apiConfigService.apiConfig?.images?.secure_base_url + 'original' + selectedMovie?.poster_path"
+    >
+  </div>
+</section>
