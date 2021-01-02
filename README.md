@@ -2,6 +2,7 @@
 
 * This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 * This project was created using a [starter](https://github.com/Mike-Mountain/ng-starter)
+* This project uses the [TMDb API](https://www.themoviedb.org/) but is not endorsed or certified by TMDb.
 
 ## Development server
 

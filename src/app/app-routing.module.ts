@@ -4,7 +4,8 @@ import {LandingComponent} from './modules/core/components/landing/landing.compon
 
 const routes: Routes = [
   {path: 'landing', component: LandingComponent},
-  {path: '', pathMatch: 'full', redirectTo: 'landing'}
+  {path: 'movies', loadChildren: () => import('./modules/movies/movies.module').then(m => m.MoviesModule)},
+  {path: '', pathMatch: 'full', redirectTo: 'landing'},
 ];
 
 @NgModule({
