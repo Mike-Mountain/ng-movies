@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {ombdApiKey} from '../../../../../environments/token.const';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,12 @@ export class BaseHttpService<T> {
         url += `&${key}=${extras[key]}`;
       });
     }
+    return url;
+  }
+
+  public setImdbUrl(id: string): string {
+    let url = `${environment.omdbApiUrl}/?i=${id}`;
+    url += `&apikey=${ombdApiKey}`;
     return url;
   }
 

@@ -1,15 +1,55 @@
 <section class="movie-details-container">
-  <div class="movie-details-main">
-    <div class="card details-card">
-      <h1>{{selectedMovie?.title}}</h1>
-      <h3>{{selectedMovie?.tagline}}</h3>
+  <div class="card">
+    <div class="movie-media">
+      <img
+        class="poster"
+        [alt]="'Poster for ' + movieDetails?.title"
+        [src]="apiConfigService.apiConfig?.images?.secure_base_url + 'original' + movieDetails?.poster_path"
+      >
+      <div class="trailer">
+        <!--      <ng-container *ngIf="trailerSrc">-->
+        <!--        <iframe [src]="trailerSrc" allowfullscreen></iframe>-->
+        <!--      </ng-container>-->
+      </div>
+    </div>
+    <div class="movie-genres">
+      <div class="w-100 flex-around">
+        <ng-container *ngFor="let genre of movieDetails?.genres; let index = index">
+          <small>{{genre.name}}</small>
+          <small *ngIf="index !== movieDetails!.genres!.length - 1"> | </small>
+        </ng-container>
+      </div>
     </div>
   </div>
-  <div class="poster">
-    <img
-      class="card"
-      [alt]="'Poster for ' + selectedMovie?.title"
-      [src]="apiConfigService.apiConfig?.images?.secure_base_url + 'original' + selectedMovie?.poster_path"
-    >
+  <div class="movie-details" *ngIf="imdMovieDetails">
+    <p>{{imdMovieDetails.Plot}}</p>
+    <button>
+      <small>Read full plot overview</small>
+    </button>
+    <p>Directed by: {{imdMovieDetails.Director}}</p>
+    <p>Cast: {{imdMovieDetails.Actors}}</p>
   </div>
 </section>
+
+<!--  <div class="movie-details-main">-->
+<!--    <div class="details-card">-->
+<!--      <h1 class="text-center">{{selectedMovie?.title}}</h1>-->
+<!--      <h3 class="text-center">{{selectedMovie?.tagline}}</h3>-->
+<!--      <div class="genres">-->
+<!--        <ng-container *ngFor="let genre of selectedMovie?.genres; let index = index">-->
+<!--          <small class="card">{{genre.name}}</small>-->
+<!--        </ng-container>-->
+<!--      </div>-->
+<!--      <div class="flex-around w-100">-->
+<!--        <a [href]="selectedMovie?.homepage" target="_blank">-->
+<!--          <button class="imdb-button">Home Page</button>-->
+<!--        </a>-->
+<!--        <a [href]="'https://www.imdb.com/title/' + selectedMovie?.imdb_id" target="_blank">-->
+<!--          <button class="imdb-button">IMDB</button>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="movie-details-other">-->
+
+<!--  </div>-->
